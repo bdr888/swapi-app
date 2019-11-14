@@ -43,7 +43,7 @@ const Films = () => {
   return (
     <Wrapper>
       {data.results.map((item, index) => (
-        <Tile key={index} heading={item.director} subHeading={item.title} />
+        <Tile key={index} heading={item.title} subHeading={item.director} />
       ))}
     </Wrapper>
   )

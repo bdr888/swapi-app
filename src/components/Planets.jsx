@@ -19,17 +19,13 @@ const Planets = () => {
   }
 
   if (error) {
-    return (
-      <>
-        <div>{error}</div>
-      </>
-    )
+    return <div>{error}</div>
   }
 
   return (
     <Wrapper>
       {data.results.map((item, index) => (
-        <Tile key={index} heading={item.name} subHeading={item.terrain}/>
+        <Tile key={index} heading={item.name} subHeading={item.terrain} />
       ))}
     </Wrapper>
   )
