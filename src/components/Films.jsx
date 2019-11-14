@@ -34,6 +34,7 @@ const Films = () => {
           id={item.episode_id}
           key={index}
           subHeading={item.director}
+          openingCrawl={item.opening_crawl}
         />
       ))}
     </Wrapper>
