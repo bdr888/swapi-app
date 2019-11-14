@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Tile from "./Tile"
-import useFetch from "./useFetch"
+import useFetch from "../hooks/useFetch"
 import LoadingSpinner from "./LoadingSpinner"
 
 const Wrapper = styled.div`
