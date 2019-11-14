@@ -1,5 +1,6 @@
-import React from "react"
+import React, {useState} from "react"
 import styled from "styled-components"
+import useFetch from "../hooks/useFetch"
 
 const TileWrapper = styled.button`
   display: flex;
@@ -24,11 +25,29 @@ const SubHeading = styled.div`
   font-size: 0.8rem;
 `
 
-const Tile = ({ heading, subHeading }) => (
-  <TileWrapper>
-    <Heading>{heading}</Heading>
-    <SubHeading>{subHeading}</SubHeading>
-  </TileWrapper>
-)
+const OpeningCrawlStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  padding: 0.5rem;
+`
+const Tile = ({ heading, id, subHeading }) => {
+  const [crawlVisible, setCrawlVisible] = useState(false)
+  const { data } = useFetch(`https://swapi.co/api/films/${id}`)
+
+  return (
+    <TileWrapper>
+      <Heading>{heading}</Heading>
+      <SubHeading>{subHeading}</SubHeading>
+      {crawlVisible && (
+        <OpeningCrawlStyled>{data.opening_crawl}</OpeningCrawlStyled>
+      )}
+      <button onClick={() => setCrawlVisible(!crawlVisible)}>
+        {crawlVisible ? "Hide" : "Show Opening Crawl"}
+      </button>
+    </TileWrapper>
+  )
+}
 
 export default Tile

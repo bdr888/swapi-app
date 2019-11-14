@@ -11,26 +11,12 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 `
-
 const Films = () => {
-  // const url = 'https://swapi.co/api/films/';
-  // const [films, setFilms] = useState([
-  //   { title: 'title', director: 'director' },
-  // ]);
-
-  // useEffect(() => {
-  //   fetch(url)
-  //   .then(res => res.json())
-  //   .then(json => setFilms(json.results))
-  // }, []);
-
   const { loading, data, error } = useFetch("https://swapi.co/api/films/")
 
   if (loading === true) {
     return <LoadingSpinner />
   }
-
-  // return loading && <LoadingSpinner />
 
   if (error) {
     return (
@@ -43,7 +29,12 @@ const Films = () => {
   return (
     <Wrapper>
       {data.results.map((item, index) => (
-        <Tile key={index} heading={item.title} subHeading={item.director} />
+        <Tile
+          heading={item.title}
+          id={item.episode_id}
+          key={index}
+          subHeading={item.director}
+        />
       ))}
     </Wrapper>
   )
