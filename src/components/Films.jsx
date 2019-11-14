@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import Tile from "./Tile"
-import useFetch from './useFetch';
+import useFetch from "./useFetch"
+import LoadingSpinner from "./LoadingSpinner"
 
 // outer-most wrapper
 const Wrapper = styled.div`
@@ -23,27 +24,29 @@ const Films = () => {
   //   .then(json => setFilms(json.results))
   // }, []);
 
-  const { loading, data, error } = useFetch('https://swapi.co/api/films/');
+  const { loading, data, error } = useFetch("https://swapi.co/api/films/")
 
   if (loading === true) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />
   }
 
+  // return loading && <LoadingSpinner />
+
   if (error) {
-    return(
+    return (
       <>
         <div>{error}</div>
       </>
-    );
+    )
   }
 
   return (
     <Wrapper>
       {data.results.map((item, index) => (
-        <Tile key={index} director={item.director} filmTitle={item.title} />
+        <Tile key={index} heading={item.director} subHeading={item.title} />
       ))}
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Films;
+export default Films

@@ -13,21 +13,21 @@ const TileWrapper = styled.button`
   border-radius: 8px;
 `
 
-const Title = styled.div`
+const Heading = styled.div`
   margin: 0.5rem;
   font-weight: bold;
   font-size: 1rem;
 `
 
-const Director = styled.div`
+const SubHeading = styled.div`
   margin: 0.5rem;
   font-size: 0.8rem;
 `
 
-const Tile = ({ filmTitle, director }) => (
+const Tile = ({ heading, subHeading }) => (
   <TileWrapper>
-    <Title>{filmTitle}</Title>
-    <Director>{director}</Director>
+    <Heading>{heading}</Heading>
+    <SubHeading>{subHeading}</SubHeading>
   </TileWrapper>
 )
 
