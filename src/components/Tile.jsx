@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import styled, { css } from "styled-components"
-import useFetch from "../hooks/useFetch"
 
 const TileWrapper = styled.div`
   display: flex;

@@ -12,8 +12,8 @@ const motion = props => keyframes`
 `
 
 const Wrapper = styled.div`
-  display: inline-block;
-  position: relative;
+  display: flex;
+  margin: 0 auto;
   width: 64px;
   height: 64px;
 `

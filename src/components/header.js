@@ -1,21 +1,20 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import styled, { css } from "styled-components"
-import useWindowWidth from "../hooks/useWindowWidth"
+import styled from "styled-components"
 
-// pass in window width to toggle flex direction
-const HeaderWrapper = styled.div(
-  ({ windowWidth }) => css`
-    display: flex;
-    flex-direction: ${windowWidth > 400 ? 'row' : 'column'};
-    align-items: center;
-    justify-content: flex-start;
-  `
-)
+const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`
+const Links = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`
 
 const Header = ({ siteTitle }) => {
-  const width = useWindowWidth()
   return (
     <header
       style={{
@@ -24,14 +23,13 @@ const Header = ({ siteTitle }) => {
       }}
     >
       <HeaderWrapper
-        windowWidth={width}
         style={{
           margin: `0 auto`,
           maxWidth: 960,
           padding: `1.45rem 1.0875rem`,
         }}
       >
-        <h1 style={{ display: "flex", margin: 2 }}>
+        <h1 style={{ display: "flex", margin: 2, fontSize: 28 }}>
           <Link
             to="/"
             style={{
@@ -42,28 +40,30 @@ const Header = ({ siteTitle }) => {
             {siteTitle}
           </Link>
         </h1>
-        <h3 style={{ display: "flex", margin: 8 }}>
-          <Link
-            to="/films"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            Films
-          </Link>
-        </h3>
-        <h3 style={{ display: "flex", margin: 8 }}>
-          <Link
-            to="/planets"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            Planets
-          </Link>
-        </h3>
+        <Links>
+          <h4 style={{ display: "flex", margin: 6 }}>
+            <Link
+              to="/films"
+              style={{
+                color: `white`,
+                textDecoration: `none`,
+              }}
+            >
+              Films
+            </Link>
+          </h4>
+          <h4 style={{ display: "flex", margin: 6 }}>
+            <Link
+              to="/planets"
+              style={{
+                color: `white`,
+                textDecoration: `none`,
+              }}
+            >
+              Planets
+            </Link>
+          </h4>
+        </Links>
       </HeaderWrapper>
     </header>
   )
